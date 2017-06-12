@@ -26,13 +26,14 @@ int main() {
     // 計算回数カウント用
     int count = 0;
 
-    int heikin = (max + min) / 2;
-    for (int i = max - 1; i >= heikin; i--)
+    int mean = (max + min) / 2;
+    printf("mean    = %d\n", mean);
+    for (int i = max - 1; i >= mean; i--)
     {
         int j = i;
         for (; j >= min; j--)
         {
-            // if(i < heikin && j < heikin) break;
+            // if(i == mean && j < mean) break;
             int r = i * j;
             count++;
             if (palindrome(r))
@@ -44,11 +45,11 @@ int main() {
         }
     }
 
-    printf("回文 =  %d\n", ans);
+    printf("ans     = %d\n", ans);
 
     end = clock();
     printf("%d回計算しました。\n", count);
-    printf("%.10f秒かかりました\n",(double)(end-start)/CLOCKS_PER_SEC);
+    printf("%.6f秒かかりました\n",(double)(end-start)/CLOCKS_PER_SEC);
 
     return 0;
 }
